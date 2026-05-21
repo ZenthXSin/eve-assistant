@@ -1,0 +1,8 @@
+displayName: "Eve Assistant"
+name: "evai"
+author: "zxs"
+main: "evai.EveMod"
+description: "Kotlin Mod 开发调试辅助工具 - 通过 HTTP API 为 AI Agent 提供游戏内调试能力"
+version: 1.0
+minGameVersion: 154
+multiplayerCompatible: true

@@ -1,0 +1,41 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "2.2.0"
+}
+
+version '1.0'
+
+sourceSets.main.kotlin.srcDirs = ["src"]
+
+repositories{
+    mavenCentral()
+    maven{ url "https://raw.githubusercontent.com/Zelaux/MindustryRepo/master/repository" }
+    maven{ url 'https://jitpack.io' }
+}
+
+dependencies{
+    compileOnly "com.github.Anuken.Arc:arc-core:v157.4"
+    compileOnly "com.github.Anuken.Mindustry:core:v157.4"
+}
+
+kotlin {
+    jvmToolchain(21)
+}
+
+jar{
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveFileName = "${project.archivesBaseName}Desktop.jar"
+
+    from{
+        configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree(it) }
+    }
+
+    from(rootDir){
+        include "mod.hjson"
+    }
+
+    doLast{
+        delete{
+            delete "$buildDir/libs/${project.archivesBaseName}Desktop.jar"
+        }
+    }
+}
