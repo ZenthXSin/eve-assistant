@@ -15,7 +15,7 @@ public class HttpServer {
 
     public static void start(int port) {
         try {
-            server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress("0.0.0.0", port), 0);
+            server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress("127.0.0.1", port), 0);
             server.createContext("/api/run", new ApiCommandHandler());
             server.createContext("/api/status", new ApiStatusHandler());
             server.createContext("/api/inspect", new ApiInspectHandler());
